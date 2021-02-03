@@ -1,0 +1,40 @@
+header h1 {
+    display: inline;
+}
+
+header {
+    background-color: blueviolet;
+    color: white;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+header div {
+    flex-grow: 1;
+}
+
+header span input {
+    box-sizing: border-box;
+    max-width: 200px;
+    outline: none;
+    border: none;
+    background-color: #b577f0;
+    color: white;
+    border-radius: 10px;
+    height: 25px;
+    padding: 0 25px 0 10px;
+}
+
+header span {
+    position: relative;
+}
+
+span img {
+    height: 18px;
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.4;
+}
