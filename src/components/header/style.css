@@ -5,7 +5,7 @@ header h1 {
 header {
     background-color: blueviolet;
     color: white;
-    padding: 0.5rem;
+    padding: 0.5rem 2rem;
     display: flex;
     align-items: center;
 }
@@ -24,6 +24,10 @@ header span input {
     border-radius: 10px;
     height: 25px;
     padding: 0 25px 0 10px;
+}
+
+header span input:focus, header span input:hover {
+    box-shadow: 0px 0px 5px 5px #5c2391;
 }
 
 header span {

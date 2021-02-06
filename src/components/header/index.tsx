@@ -5,10 +5,10 @@ import SearchLogo from '../images/search-solid.svg';
 const Header: React.FC = () => {
     return(
         <header>
-            <h1>Movie Store</h1>
+            <h1>Anime Store</h1>
             <div className='filler'></div>
             <span>
-                <input placeholder='search movies'/>
+                <input placeholder='Search...'/>
                 <img src={SearchLogo} alt=''/>
             </span>
         </header>
