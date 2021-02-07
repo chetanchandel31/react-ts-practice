@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Anime from './Anime';
+import './style.css'
 
 const AnimeList: React.FC = () => {
     const [anime, setAnime] = React.useState<any[]>([]);
@@ -20,9 +21,7 @@ const AnimeList: React.FC = () => {
     )
 
     return(
-        <>
-            <h1>anime list</h1>
-            <div>
+            <div className ='animeList'>
                 {anime.map(animeObj => {
                     if (animeObj && animeObj.Type === 'series') {
                         let animeComp = <Anime key={animeObj.imdbID}
@@ -34,7 +33,6 @@ const AnimeList: React.FC = () => {
                     } else return null
                 })}
             </div>
-        </>
     )
 }
 
