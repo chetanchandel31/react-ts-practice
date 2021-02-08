@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import './style.css';
 import SearchLogo from '../images/search-solid.svg';
 
-const Header: React.FC<any> = ({setList, setAnime}) => {
+type HeaderProps = {
+    setList: React.Dispatch<React.SetStateAction<any[]>>;
+    setAnime: React.Dispatch<React.SetStateAction<any[]>>;
+}
+
+const Header: React.FC<HeaderProps> = ({setList, setAnime}) => {
     const [inputVal, setInputVal] = useState<string>('');
 
     const handleSearch: () => void = () => {
