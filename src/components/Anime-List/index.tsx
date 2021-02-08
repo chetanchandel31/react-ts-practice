@@ -23,7 +23,7 @@ const AnimeList: React.FC<AnimeListProps> = ({anime, setAnime, list}) => {
     useEffect(
         () => {
             list.forEach((animeName: string) => {
-            fetch(`http://www.omdbapi.com/?apikey=3c9e3d41&s=${encodeURIComponent(animeName)}&type=series`)
+            fetch(`https://www.omdbapi.com/?apikey=3c9e3d41&s=${encodeURIComponent(animeName)}&type=series`)
             .then(res => res.json())
             .then(res => {
                 let animeArr: AnimeObj[] = res.Search;
