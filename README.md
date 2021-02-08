@@ -8,4 +8,3 @@ it uses typescript, react js and plain css.
 1. details(like description, ratings etc.) of series upon clicking
 1. filtered search for series/movies
 1. better view on mobile
-1. better view on mobile
