@@ -3,3 +3,13 @@
     flex-wrap: wrap;
     padding: 20px;
 }
+
+.errorMessage{
+    text-align: center;
+}
+
+.errorMessage .sadPikachu{
+    width: 50%;
+    margin-top: 50px;
+    border-radius: 0.5rem;
+}

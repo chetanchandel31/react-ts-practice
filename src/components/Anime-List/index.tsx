@@ -1,28 +1,31 @@
 import React, { useEffect } from 'react';
 import Anime from './Anime';
-import './style.css'
+import './style.css';
+import SadPikachu from '../images/tenor.gif';
 
-const AnimeList: React.FC = () => {
-    const [anime, setAnime] = React.useState<any[]>([]);
+const AnimeList: React.FC<any> = ({anime, setAnime, list}) => {
+    const [error, setError] = React.useState<boolean>(false);
 
     useEffect(
         () => {
-            const list: string[] = ['naruto', 'dragon ball',/* 'one piece', 'beyblade', 'digimon'*/];
-            list.forEach(animeName => {
+            // const list: string[] = ['naruto', 'dragon ball',/* 'one piece', 'beyblade', 'digimon'*/];
+            list.forEach((animeName: any) => {
             fetch(`http://www.omdbapi.com/?apikey=3c9e3d41&s=${encodeURIComponent(animeName)}&type=series`)
             .then(res => res.json())
             .then(res => {
                 let animeArr: any = res.Search;
-                console.log(res);
-                setAnime(prevAnime => [...prevAnime, ...animeArr]);
+                if (!animeArr) return setError(true);
+                setError(false);
+                setAnime((prevAnime: any) => [...prevAnime, ...animeArr]);
             });
             })
-        }, []
+        }, [setAnime, list]//why
     )
 
-    return(
+    if(error === false) {
+        return(
             <div className ='animeList'>
-                {anime.map(animeObj => {
+                {anime.map((animeObj: { Type: string; imdbID: string | number | null | undefined; Title: string; Poster: string; Year: string; }) => {
                     if (animeObj && animeObj.Type === 'series') {
                         let animeComp = <Anime key={animeObj.imdbID}
                         Title={animeObj.Title}
@@ -34,6 +37,13 @@ const AnimeList: React.FC = () => {
                 })}
             </div>
     )
+    } else return (
+        <div className='errorMessage'>
+            <img src={SadPikachu} alt='' className='sadPikachu' />
+            <h4>couldn't find any results that match your search</h4>
+        </div>
+    )
+        
 }
 
 export default AnimeList;

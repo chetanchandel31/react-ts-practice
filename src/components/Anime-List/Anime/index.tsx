@@ -1,12 +1,18 @@
 import React from 'react';
 import './style.css'
 
-const Anime: React.FC<any> = (props) => {
+type AnimeProps = {
+    Title: string;
+    Year: string;
+    Poster: string;
+}
+
+const Anime: React.FC<AnimeProps> = ({Title, Year, Poster}) => {
     return(
         <div className = 'anime'>
-            <h3>{props.Title}</h3>
-            year: {props.Year}<br/>
-            <img src={props.Poster} alt="couldn't load from API"/>
+            <h3>{Title}</h3>
+            year: {Year}<br/>
+            <img src={Poster} alt="couldn't load from API"/>
         </div>
     )
 }
