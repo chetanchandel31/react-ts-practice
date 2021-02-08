@@ -29,7 +29,7 @@ const AnimeList: React.FC<AnimeListProps> = ({anime, setAnime, list}) => {
                 let animeArr: AnimeObj[] = res.Search;
                 if (!animeArr) return setError(true);
                 setError(false);
-                setAnime((prevAnime: any) => [...prevAnime, ...animeArr]);
+                setAnime((prevAnime: AnimeObj[]) => [...prevAnime, ...animeArr]);
             });
             })
         }, [setAnime, list]//why setAnime
