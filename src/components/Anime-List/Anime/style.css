@@ -1,17 +1,28 @@
 .anime{
     /* width: 25%; */
+    box-sizing: border-box;
     padding: 2%;
-    flex: 0 0 25%;
-    box-sizing:border-box;
-    /* border: solid 2px red; */
+    flex: 0 0 23%;
+    /* border: solid 4px lightblue; */
 
     display: flex;
     flex-direction: column;
     /* align-items: center; not centering some titles */
     text-align: center;
+    cursor: pointer;
+    margin: 1% 1%;
+    background-color: white;
+    min-height: 50vh;
 }
 
 .anime img{
     flex-grow: 1;
     width: 100%;
+}
+
+/* 1024 */
+@media all and (max-width: 1024px){
+    .anime{
+        flex: 0 0 48%;
+    }    
 }
