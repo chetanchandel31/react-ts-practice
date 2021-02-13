@@ -1,7 +1,7 @@
 .animeList {
     display: flex;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 2%;
 }
 
 .errorMessage{
