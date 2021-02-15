@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import AnimeList from './components/Anime-List';
+import FilterSearch from './components/FilterSearch';
 import Header from './components/header';
 
 
@@ -13,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <Header setList={setList} setAnime={setAnime}/>
+      <FilterSearch />
       <AnimeList anime={anime} setAnime={setAnime} list={list} />
     </div>
   );
