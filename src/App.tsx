@@ -11,11 +11,12 @@ function App() {
   //decide WHICH anime's info should be stored
   const [list, setList] = useState<string[]>(['one piece', 'beyblade','naruto', 'digimon', 'dragon ball'])
 
+  const [filterValue, setFilterValue] = useState<string>('series');
   return (
     <div className="App">
       <Header setList={setList} setAnime={setAnime}/>
-      <FilterSearch />
-      <AnimeList anime={anime} setAnime={setAnime} list={list} />
+      <FilterSearch setFilterValue={setFilterValue} />
+      <AnimeList anime={anime} setAnime={setAnime} list={list} filterValue={filterValue} />
     </div>
   );
 }

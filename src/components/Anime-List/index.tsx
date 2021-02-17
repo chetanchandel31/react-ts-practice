@@ -15,23 +15,34 @@ type AnimeListProps = {
     anime: AnimeObj[];
     setAnime: React.Dispatch<React.SetStateAction<any[]>>;
     list: string[];
+    filterValue: string;
 }
 
-const AnimeList: React.FC<AnimeListProps> = ({anime, setAnime, list}) => {
+const AnimeList: React.FC<AnimeListProps> = ({anime, setAnime, list, filterValue}) => {
     const [error, setError] = React.useState<boolean>(false);
 
     useEffect(
         () => {
             list.forEach((animeName: string) => {
-            fetch(`https://www.omdbapi.com/?apikey=3c9e3d41&s=${encodeURIComponent(animeName)}&type=series`)
+            let ourURL: string = `https://www.omdbapi.com/?apikey=3c9e3d41&s=${encodeURIComponent(animeName)}&type=${filterValue}`;
+            
+            fetch(ourURL)
             .then(res => res.json())
             .then(res => {
                 let animeArr: AnimeObj[] = res.Search;
                 if (!animeArr) return setError(true);
                 setError(false);
-                setAnime((prevAnime: AnimeObj[]) => [...prevAnime, ...animeArr]);
+                setAnime((prevAnime: AnimeObj[]) => {
+                    let combinedArr = [...prevAnime, ...animeArr];
+                    let filteredArr: AnimeObj[] = [];
+                    combinedArr.forEach(c => {
+                        let foundOrNot: number = filteredArr.findIndex(f => f.imdbID === c.imdbID);
+                        if (foundOrNot === -1) filteredArr.push(c);
+                    })
+                    return filteredArr;
+                });
             });
-            })
+            })// eslint-disable-next-line
         }, [setAnime, list]//why setAnime
     )
 
@@ -39,7 +50,7 @@ const AnimeList: React.FC<AnimeListProps> = ({anime, setAnime, list}) => {
         return(
             <div className ='animeList'>
                 {anime.map((animeObj: AnimeObj) => {
-                    if (animeObj && animeObj.Type === 'series') {
+                    if (animeObj) {
                         let animeComp = <Anime key={animeObj.imdbID}
                         Title={animeObj.Title}
                         Poster={animeObj.Poster}
