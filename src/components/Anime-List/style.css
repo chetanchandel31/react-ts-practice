@@ -13,3 +13,13 @@
     margin-top: 50px;
     border-radius: 0.5rem;
 }
+
+.loader{
+    text-align: center;
+}
+
+.loader .waitingShinchan{
+    margin-top: 50px;
+    width: 50%;
+    border-radius: 0.5rem;
+}
