@@ -20,7 +20,13 @@
     width: 100%;
 }
 
-@media (max-width: 630px){
+@media (max-width: 650px) {
+    .anime{
+        flex: 0 0 31.33%;       
+    }
+}
+
+@media (max-width: 460px){
     .anime{
         flex: 0 0 48%;
     }    
