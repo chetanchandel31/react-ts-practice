@@ -4,22 +4,26 @@
     padding: 2%;
 }
 
-.errorMessage{
+.errorMessage {
     text-align: center;
 }
 
-.errorMessage .sadPikachu{
+.errorMessage .sadPikachu {
     width: 50%;
     margin-top: 50px;
     border-radius: 0.5rem;
 }
 
-.loader{
+.loader {
     text-align: center;
 }
 
-.loader .waitingShinchan{
+.loader .waitingShinchan {
     margin-top: 50px;
     width: 50%;
-    border-radius: 0.5rem;
+    border-radius: 45%;
+}
+
+.invisible{
+    display: none;
 }
