@@ -1,0 +1,32 @@
+.seriesOrMovieDetails {
+	background-color: white;
+	margin: 2%;
+	padding: 2%;
+}
+
+.seriesOrMovieDetails h1 {
+	text-align: center;
+}
+
+.seriesOrMovieDetails h1, .seriesOrMovieDetails p, .seriesOrMovieDetails img {
+    margin: 4% auto;
+}
+
+.seriesOrMovieDetails img {
+	width: 50%;
+	display: block;
+}
+
+.crossBar {
+	text-align: right;
+	font-size: x-large;
+}
+
+.crossBar span {
+	cursor: pointer;
+	padding: 0.5rem;
+}
+
+.crossBar span:hover {
+	background-color: lightgray;
+}

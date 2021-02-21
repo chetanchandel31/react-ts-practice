@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./style.css";
 
 type SeriesOrMovieDetailsProps = {
 	detailedSeriesOrMovie: string;
@@ -15,43 +16,45 @@ const SeriesOrMovieDetails: React.FC<SeriesOrMovieDetailsProps> = ({ detailedSer
 			.then(res => res.json())
 			.then(res => {
 				setMovieOrSeriesInfo(res);
-				console.log(res);
+				// console.log(res);
 			});
 	}, [detailedSeriesOrMovie]);
 
 	return (
-		<>
-			<div onClick={() => setDetailedSeriesOrMovie("")}>x</div>
+		<div className="seriesOrMovieDetails">
+			<div className="crossBar">
+				<span onClick={() => setDetailedSeriesOrMovie("")}>x</span>
+			</div>
 
 			<h1>{movieOrSeriesInfo.Title}</h1>
-			
-			<img src={movieOrSeriesInfo.Poster} alt='' />
-			
+
+			<img src={movieOrSeriesInfo.Poster} alt="" />
+
 			<p>
 				<strong>Release date: </strong>
 				{movieOrSeriesInfo.Released}
 			</p>
-			
+
 			<p>
 				<strong>imdb Rating: </strong>
 				{movieOrSeriesInfo.imdbRating}
 			</p>
-			
+
 			<p>
 				<strong>Genre: </strong>
 				{movieOrSeriesInfo.Genre}
 			</p>
-			
+
 			<p>
 				<strong>Awards: </strong>
 				{movieOrSeriesInfo.Awards}
 			</p>
-			
+
 			<p>
 				<strong>Country: </strong>
 				{movieOrSeriesInfo.Country}
 			</p>
-			
+
 			<p>
 				<strong>Writer: </strong>
 				{movieOrSeriesInfo.Writer}
@@ -66,7 +69,7 @@ const SeriesOrMovieDetails: React.FC<SeriesOrMovieDetailsProps> = ({ detailedSer
 				<strong>Plot: </strong>
 				{movieOrSeriesInfo.Plot}
 			</p>
-		</>
+		</div>
 	);
 };
 
