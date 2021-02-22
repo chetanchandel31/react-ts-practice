@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ setList, setAnime, setDetailedSeriesOrM
 	return (
 		<>
 			<header>
-				<h2>Anime Store</h2>
+				<h2>Movies and Series</h2>
 				<div className="filler"></div>
 				<form
 					onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
