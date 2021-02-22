@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Anime from "./Anime";
 import "./style.css";
 import SadPikachu from "../images/tenor.gif";
-import WaitingShinchan from "../images/shinchan.gif";
 
 type AnimeObj = {
 	Type: string;
@@ -18,7 +17,7 @@ type AnimeListProps = {
 	list: string[];
 	filterValue: string;
 	detailedSeriesOrMovie: string;
-	setDetailedSeriesOrMovie:React.Dispatch<React.SetStateAction<string>>;
+	setDetailedSeriesOrMovie: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const AnimeList: React.FC<AnimeListProps> = ({ anime, setAnime, list, filterValue, detailedSeriesOrMovie, setDetailedSeriesOrMovie }) => {
@@ -30,46 +29,46 @@ const AnimeList: React.FC<AnimeListProps> = ({ anime, setAnime, list, filterValu
 		setError(false);
 		setAnime([]);
 
-		setTimeout(() => {
-			list.forEach((animeName: string) => {
-				let ourURL: string = `https://www.omdbapi.com/?apikey=3c9e3d41&s=${encodeURIComponent(animeName)}&type=${filterValue}`;
+		list.forEach((animeName: string) => {
+			let ourURL: string = `https://www.omdbapi.com/?apikey=3c9e3d41&s=${encodeURIComponent(animeName)}&type=${filterValue}`;
 
-				fetch(ourURL)
-					.then(res => res.json())
-					.then(res => {
-						let animeArr: AnimeObj[] = res.Search;
-						if (!animeArr) return setError(true);
+			fetch(ourURL)
+				.then(res => res.json())
+				.then(res => {
+					let animeArr: AnimeObj[] = res.Search;
+					if (!animeArr) return setError(true);
 
-						setAnime((prevAnime: AnimeObj[]) => {
-							let combinedArr = [...prevAnime, ...animeArr];
-							let filteredArr: AnimeObj[] = [];
-							combinedArr.forEach(c => {
-								let foundOrNot: number = filteredArr.findIndex(f => f.imdbID === c.imdbID);
-								if (foundOrNot === -1) filteredArr.push(c);
-							});
-							return filteredArr;
+					setAnime((prevAnime: AnimeObj[]) => {
+						let combinedArr = [...prevAnime, ...animeArr];
+						let filteredArr: AnimeObj[] = [];
+						combinedArr.forEach(c => {
+							let foundOrNot: number = filteredArr.findIndex(f => f.imdbID === c.imdbID);
+							if (foundOrNot === -1) filteredArr.push(c);
 						});
+						return filteredArr;
 					});
-			});
-
-			setLoading(false);
-		}, 1500);
-
+				})
+				.then(() => setLoading(false));
+		});
 		// eslint-disable-next-line
 	}, [list, filterValue]);
 
-	let loader: JSX.Element = (
-		<div className="loader">
-			<img src={WaitingShinchan} alt="" className="waitingShinchan" />
-			<h1>Loading...</h1>
-		</div>
-	);
+	let loader: JSX.Element = <div className="animatedLoader"></div>;
 
 	let animeList: JSX.Element = (
-		<div className={detailedSeriesOrMovie? 'invisible': 'animeList'}>
+		<div className="animeList">
 			{anime.map((animeObj: AnimeObj) => {
 				if (animeObj) {
-					let animeComp = <Anime key={animeObj.imdbID} Title={animeObj.Title} Poster={animeObj.Poster} Year={animeObj.Year} id={animeObj.imdbID} setDetailedSeriesOrMovie={setDetailedSeriesOrMovie} />;
+					let animeComp = (
+						<Anime
+							key={animeObj.imdbID}
+							Title={animeObj.Title}
+							Poster={animeObj.Poster}
+							Year={animeObj.Year}
+							id={animeObj.imdbID}
+							setDetailedSeriesOrMovie={setDetailedSeriesOrMovie}
+						/>
+					);
 
 					return animeComp;
 				} else return null;
@@ -84,7 +83,7 @@ const AnimeList: React.FC<AnimeListProps> = ({ anime, setAnime, list, filterValu
 		</div>
 	);
 
-	return <>{!loading && !error ? animeList : loading ? loader : errorMessage}</>;
+	return <div className={detailedSeriesOrMovie ? "invisible" : ""}>{!loading && !error ? animeList : loading ? loader : errorMessage}</div>;
 };
 
 export default AnimeList;

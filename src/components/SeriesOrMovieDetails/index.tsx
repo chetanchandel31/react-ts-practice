@@ -6,8 +6,13 @@ type SeriesOrMovieDetailsProps = {
 	setDetailedSeriesOrMovie: React.Dispatch<React.SetStateAction<string>>;
 };
 
+type MovieOrSeriesObj = {
+	[key: string]: any;
+}
+
 const SeriesOrMovieDetails: React.FC<SeriesOrMovieDetailsProps> = ({ detailedSeriesOrMovie, setDetailedSeriesOrMovie }) => {
-	const [movieOrSeriesInfo, setMovieOrSeriesInfo] = useState<any>({});
+	const [movieOrSeriesInfo, setMovieOrSeriesInfo] = useState<MovieOrSeriesObj>({});
+	const [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
 		const URL = `https://www.omdbapi.com/?apikey=3c9e3d41&i=${detailedSeriesOrMovie}&plot=full`;
@@ -16,9 +21,12 @@ const SeriesOrMovieDetails: React.FC<SeriesOrMovieDetailsProps> = ({ detailedSer
 			.then(res => res.json())
 			.then(res => {
 				setMovieOrSeriesInfo(res);
+				setLoading(false);
 				// console.log(res);
 			});
 	}, [detailedSeriesOrMovie]);
+
+	if (loading) return <div className="animatedLoader"></div>
 
 	return (
 		<div className="seriesOrMovieDetails">
