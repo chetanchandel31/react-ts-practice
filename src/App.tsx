@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "./App.css";
-import AnimeList from "./components/MovieOrSeries-List";
+import MovieOrSeriesList from "./components/MovieOrSeries-List";
 import FilterSearch from "./components/FilterSearch";
 import Header from "./components/header";
 import SeriesOrMovieDetails from "./components/SeriesOrMovieDetails";
 
 function App() {
-	//store info of anime to render
-	const [anime, setAnime] = useState<any[]>([]);
-	//decide WHICH anime's info should be stored
+	//store info of movie/series to render
+	const [movieOrSeries, setMovieOrSeries] = useState<any[]>([]);
+	//decide WHICH movie/series's info should be stored
 	const [list, setList] = useState<string[]>(["one piece", "beyblade", "naruto", "digimon", "dragon ball"]);
 
 	const [filterValue, setFilterValue] = useState<string>("series");
@@ -17,11 +17,11 @@ function App() {
 
 	return (
 		<div className="App">
-			<Header setList={setList} setAnime={setAnime} setDetailedSeriesOrMovie={setDetailedSeriesOrMovie} />
+			<Header setList={setList} setMovieOrSeries={setMovieOrSeries} setDetailedSeriesOrMovie={setDetailedSeriesOrMovie} />
 			<FilterSearch setFilterValue={setFilterValue} />
-			<AnimeList
-				anime={anime}
-				setAnime={setAnime}
+			<MovieOrSeriesList
+				movieOrSeries={movieOrSeries}
+				setMovieOrSeries={setMovieOrSeries}
 				list={list}
 				filterValue={filterValue}
 				detailedSeriesOrMovie={detailedSeriesOrMovie}

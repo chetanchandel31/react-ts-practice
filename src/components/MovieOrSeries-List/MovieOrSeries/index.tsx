@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-type AnimeProps = {
+type MovieOrSeriesProps = {
 	Title: string;
 	Year: string;
 	Poster: string;
@@ -9,9 +9,9 @@ type AnimeProps = {
 	setDetailedSeriesOrMovie:React.Dispatch<React.SetStateAction<string>>;
 };
 
-const Anime: React.FC<AnimeProps> = ({ Title, Year, Poster, id, setDetailedSeriesOrMovie }) => {
+const MovieOrSeriesTile: React.FC<MovieOrSeriesProps> = ({ Title, Year, Poster, id, setDetailedSeriesOrMovie }) => {
 	return (
-		<div className="anime" onClick={() => setDetailedSeriesOrMovie(id)}>
+		<div className="movieOrSeriesTile" onClick={() => setDetailedSeriesOrMovie(id)}>
 			<h3>{Title}</h3>
 			year: {Year}
 			<br />
@@ -20,4 +20,4 @@ const Anime: React.FC<AnimeProps> = ({ Title, Year, Poster, id, setDetailedSerie
 	);
 };
 
-export default Anime;
+export default MovieOrSeriesTile;

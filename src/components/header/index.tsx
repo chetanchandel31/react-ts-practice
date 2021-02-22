@@ -4,16 +4,16 @@ import SearchLogo from "../images/search-solid.svg";
 
 type HeaderProps = {
 	setList: React.Dispatch<React.SetStateAction<any[]>>;
-	setAnime: React.Dispatch<React.SetStateAction<any[]>>;
+	setMovieOrSeries: React.Dispatch<React.SetStateAction<any[]>>;
 	setDetailedSeriesOrMovie: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const Header: React.FC<HeaderProps> = ({ setList, setAnime, setDetailedSeriesOrMovie }) => {
+const Header: React.FC<HeaderProps> = ({ setList, setMovieOrSeries, setDetailedSeriesOrMovie }) => {
 	const [inputVal, setInputVal] = useState<string>("");
 
 	const handleSearch: () => void = () => {
 		setDetailedSeriesOrMovie("");
-		setAnime([]);
+		setMovieOrSeries([]);
 		setList([inputVal]);
 	};
 

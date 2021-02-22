@@ -1,4 +1,4 @@
-.anime {
+.movieOrSeriesTile {
     /* width: 25%; */
     box-sizing: border-box;
     padding: 2%;
@@ -15,19 +15,19 @@
     min-height: 50vh;
 }
 
-.anime img {
+.movieOrSeriesTile img {
     flex-grow: 1;
     width: 100%;
 }
 
 @media (max-width: 680px) {
-    .anime {
+    .movieOrSeriesTile {
         flex: 0 0 31.33%;
     }
 }
 
 @media (max-width: 550px) {
-    .anime {
+    .movieOrSeriesTile {
         flex: 0 0 48%;
     }
 }
