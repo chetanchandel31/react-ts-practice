@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import AnimeList from "./components/Anime-List";
+import AnimeList from "./components/MovieOrSeries-List";
 import FilterSearch from "./components/FilterSearch";
 import Header from "./components/header";
 import SeriesOrMovieDetails from "./components/SeriesOrMovieDetails";

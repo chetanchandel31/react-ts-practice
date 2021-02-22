@@ -33,13 +33,13 @@
 
 .animatedLoader {
 	position: absolute;
-	top: 50%;
+	top: 60%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	color: transparent;
 	border-radius: 50%;
-	border: solid 5px gray;
-	border-top: 5px solid blueviolet;
+	border: solid 10px gray;
+	border-top: 10px solid blueviolet;
 	animation: animate 1s infinite;
 	width: 100px;
 	height: 100px;

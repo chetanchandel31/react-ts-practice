@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Anime from "./Anime";
+import Anime from "./MovieOrSeries";
 import "./style.css";
 import SadPikachu from "../images/tenor.gif";
 
