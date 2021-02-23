@@ -40,7 +40,7 @@
 	border-radius: 50%;
 	border: solid 10px gray;
 	border-top: 10px solid blueviolet;
-	animation: animate 1s infinite;
+	animation: animate 1s infinite linear;
 	width: 100px;
 	height: 100px;
 }
